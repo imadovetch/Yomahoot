@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* border-[1px_solid_red] */
+
+@layer base {
+  html {
+    --app-dark: theme(colors.sky.50);
+    --app--dark: theme(colors.sky.100);
+
+    --app-light: theme(colors.sky.900);
+    --app--light: theme(colors.sky.800);
+
+    --app-shadow: #00000025;
+
+    --app-primary: theme(colors.pink.300);
+    --error: theme(colors.red.300);
+    --success: theme(colors.green.300);
+    --danger: theme(colors.yellow.300);
+    --quotes : theme(colors.black);
+  }
+
+    html[theme="dark"] {
+      --app-dark: theme(colors.sky.900);
+      --app--dark: theme(colors.sky.800);
+
+      --app-light: theme(colors.sky.50);
+      --app--light: theme(colors.sky.100);
+
+      --app-shadow: #00000025;
+
+      --app-primary: theme(colors.pink.400);
+      --error: theme(colors.red.300);
+      --success: theme(colors.green.300);
+      --danger: theme(colors.yellow.300);
+      --quotes : theme(colors.white);
+    }
+
+  body {
+    background-color: var(--app-dark);
+    color: var(--app-light);
+    height: 100vh;
+  }
+  #__next {
+    height: 100%;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-base {
+    @apply
+    shadow-md cursor-pointer bg-app-primary
+    text-app-light py-2 px-4 rounded-full outline-none
+    hover:ring-2 hover:ring-app-light duration-300;
+  }
+
+  /* Containers */
+  .test {
+    @apply border-4 border-black;
+  }
+  .center {
+    @apply flex justify-center items-center;
+  }
+  .format2,
+  .format4 {
+    @apply bg-app-dark h-80 w-full md:w-80 border border-app--dark
+    flex justify-center items-center rounded-md shadow-md
+    select-none cursor-pointer;
+  }
+  .addquestion {
+    
+    @apply absolute bg-app--dark border-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none cursor-pointer  flex-col justify-between  w-96 mx-auto p-6   rounded-lg shadow-lg;
+  }
+  .truefalse{
+    @apply w-1/2 h-full hover:scale-105 hover:cursor-pointer bg-app-dark
+  }
+  .ans4wers{
+    width :48%;
+     @apply h-2/5   bg-app-dark rounded-lg  border hover:cursor-pointer hover:scale-105
+     
+  }
+}
+
+@layer utilities {
+  .animate-toright {
+    animation: kfr-toright 2s;
+  }
+
+  @keyframes kfr-toright {
+    from {
+      transform: translate(-100%);
+      opacity: 0;
+    }
+  }
+
+  .animate-toleft {
+    animation: kfr-toleft 2s;
+  }
+
+  @keyframes kfr-toleft {
+    from {
+      transform: translate(100%);
+      opacity: 0;
+    }
+  }
+
+  .animate-rotate45 {
+    animation: kfr-rotate45 2s;
+  }
+
+  @keyframes kfr-rotate45 {
+    from {
+      transform: rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-zoom {
+    animation: kfr-zoom 2s;
+  }
+
+  @keyframes kfr-zoom {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  .blocks {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    --color: var(--app-dark);
+    background-color: var(--app--dark);
+    background-image: linear-gradient(
+        0deg,
+        transparent 24%,
+        var(--color) 25%,
+        var(--color) 26%,
+        transparent 27%,
+        transparent 74%,
+        var(--color) 75%,
+        var(--color) 76%,
+        transparent 77%,
+        transparent
+      ),
+      linear-gradient(
+        90deg,
+        transparent 24%,
+        var(--color) 25%,
+        var(--color) 26%,
+        transparent 27%,
+        transparent 74%,
+        var(--color) 75%,
+        var(--color) 76%,
+        transparent 77%,
+        transparent
+      );
+    background-size: 55px 55px;
+  }
+
+}
