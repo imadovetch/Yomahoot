@@ -23,17 +23,28 @@ function add2formatdiv(){
 			console.log(Question2, answer1, answer2);
 			const data_2 = {Question2,answer1,answer2,rightanswer_2,uniqueId}
 
-			fetch("/api/data_2",{
-				method : "POST",
-				headers : {
-					Accept: "application/json",
-					"Content-type" : "application/json"
+			const storedDataJson = localStorage.getItem('gameinprocess');
 
-				},
-				body : JSON.stringify(data_2),
-			})
-			.then((res) => res.json())
-			.then((res) => console.log(res));
+
+			const storedData = JSON.parse(storedDataJson) || { questions: [] };
+
+
+			const newQuestion = {
+				id: count,
+				format: 2,
+				question: Question2,
+				answer1: answer1,
+				answer2: answer2,
+				correct: rightanswer_2,
+			};
+
+			storedData.questions.push(newQuestion);
+
+			console.log(storedData);
+			const updatedDataJson = JSON.stringify(storedData);
+
+			
+			localStorage.setItem('gameinprocess', updatedDataJson);
 		} else {
 		  document.querySelector(".error").textContent = "Choose the right Answer";
 		}

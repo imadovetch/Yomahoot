@@ -44,7 +44,7 @@ async function getGame(id) {
     // Connect to database
     Connecttomongodb();
     // Get Game
-    const game = await GameModel.findOne({ id: id });
+    const game = await GameModel.find({ id: id });
     return game;
   } catch (e) {
     console.log("Error while getting game");

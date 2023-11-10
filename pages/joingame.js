@@ -1,10 +1,15 @@
+// JoinGame.js
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-
+import Link from 'next/link';
 const socket = io('http://127.0.0.1:3000');
+
+let gameForImportValue = null; // Declare a variable outside the component
 
 function JoinGame() {
   const [likes, setLikes] = useState(0);
+  const [games, setGames] = useState(null);
+  const [codeInput, setCodeInput] = useState(''); // State to store user input
 
   useEffect(() => {
     socket.on('likeupdate', (count) => {
@@ -16,14 +21,45 @@ function JoinGame() {
     socket.emit('liked');
   };
 
+  const handleCodeSubmit = () => {
+    const getGame = () => {
+      fetch(`/api/game?id=${codeInput}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data.game);
+          setGames(data.game);
+          gameForImportValue = data.game; 
+          console.log("gameForImportValue:fih", gameForImportValue);
+          localStorage.setItem('game', JSON.stringify(gameForImportValue));
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+
+    getGame();
+  };
+
   return (
     <div>
       <button onClick={handleLike} className="btn">
         aaaaaaay
       </button>
       <div id="likes">{likes}</div>
+  
+      <div>
+        <label htmlFor="codeInput">Enter Code:</label>
+        <input
+          type="text"
+          id="codeInput"
+          value={codeInput}
+          onChange={(e) => setCodeInput(e.target.value)}
+        />
+        <Link href="./preparegame"><button onClick={handleCodeSubmit}>Submit Code</button></Link>
+      </div>
     </div>
   );
 }
 
 export default JoinGame;
+export { gameForImportValue }; 

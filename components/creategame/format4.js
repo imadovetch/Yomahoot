@@ -28,18 +28,32 @@ function add4formatdiv() {
       
       var rightanswer = selectedRadio.value;
       
-      const data = { Question4, answer4, answer3, answer2, answer1 , rightanswer, uniqueId};
+      const storedDataJson = localStorage.getItem('gameinprocess');
 
-          fetch("/api/data", {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          })
-        .then((res) => res.json())
-        .then((res) => console.log(res));
+
+  const storedData = JSON.parse(storedDataJson) || { questions: [] };
+
+
+  const newQuestion = {
+    id: count,
+    format: 4,
+    question: Question4,
+    answer1: answer1,
+    answer2: answer2,
+    answer3: answer3,
+    answer4: answer4,
+    correct: rightanswer,
+  };
+
+  count++;
+  storedData.questions.push(newQuestion);
+
+console.log(storedData);
+  const updatedDataJson = JSON.stringify(storedData);
+
+
+  localStorage.setItem('gameinprocess', updatedDataJson);
+
 
         // Reset the input field values
       Question4a.value = "";
@@ -48,8 +62,8 @@ function add4formatdiv() {
       answer2a.value = "";
       answer1a.value = "";
       document.querySelector(".error").style.display = "none";
-      localStorage.setItem(count, Question4);
-       count++;
+      
+       
     } else {
       document.querySelector(".error").textContent = "Choose the right Answer";
     }

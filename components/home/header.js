@@ -6,23 +6,18 @@ import {user_id} from "../../pages/Interface";
 
 const uniqueId = getUniqueId();
 export {uniqueId}
-function insertnewgame(){
-	
-	const data = {uniqueId,user_id};
+function insertnewgame() {
+	const data = {
+		id: uniqueId,
+	  questions: [],
+	};
+  
 
-  fetch("/api/newgame", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res));
+	const data1Json = JSON.stringify(data);
+  
 
-	
-}
+	localStorage.setItem('gameinprocess', data1Json);
+  }
 
 export default function Header(){
 
@@ -50,7 +45,7 @@ export default function Header(){
 
 			{/* Links */}
 			<div className="flex items-center gap-2">
-				<Link onClick={insertnewgame} href="./preparegame" className="btn-base">Create Game</Link>
+				<Link onClick={insertnewgame} href="./creategame" className="btn-base">Create Game</Link>
 				<Link href="./joingame" className="btn-base">Join game</Link>
 				<button className="btn-base" onClick={switchTheme}>
 					{darkTheme ? 'Dark' : 'Light'}

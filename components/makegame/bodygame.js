@@ -1,35 +1,109 @@
-import React, { useEffect } from 'react'; // Import useEffect from 'react'
+import React, { useEffect, useState } from 'react';
 import Format2game from './formar2game';
 import Format4game from './format4game';
+import insertscore from './score'
+var extractins;
+var gameidf;
+function refreach() {
+  const games = document.querySelectorAll('.a');
+  
+  const playername = document.querySelector('.nameplayer');
+  const gamediv = document.querySelector('.game');
+  playername.style.display = "none";
+  gamediv.style.display = "flex";
+  let index = 0
+// notes
+var notesArray = [];
 
-const groupData = [
-  { id: 1, type: 'yes', name: 'Group 1' },
-// { id: 2, type: 'yes', name: 'Group 2' },
-//  { id: 3, type: 'no', name: 'Group 3' },
-  // ... more groups
-];
+const notesArrayString = JSON.stringify(notesArray);
+var count = 0;
+localStorage.setItem('notes', notesArrayString);
+var countholder = document.querySelector('.count');
+
+const countintervalId = setInterval(()=>{
+  count++;
+  countholder.textContent = count;
+},1000)
+
+const intervalId = setInterval(() => {
+  games[index].style.display = "none";
+  
+  CHECKCLICK(games[index]);
+  index++;
+  
+    count = 0;
+  if (index  === games.length ) {
+    clearInterval(countintervalId);
+    clearInterval(intervalId);
+    localStorage.removeItem("game")
+    console.log('sala')
+    insertscore();
+    
+  }
+}, 1000);
+
+      
+     
+}
+function CHECKCLICK(gamesw){
+  const motheranswers = gamesw.querySelector('.motheranswers');
+  const answers = motheranswers.querySelectorAll('.answers');
+  console.log(answers.length)
+  answers.forEach((element) => {
+    element.addEventListener("click", () => {
+      console.log('twrekt', element.textContent);
+    });
+  });
+  
+  console.log("answers ", answers[0].textContent);
+}
 
 export default function Gamebodyprepared() {
+  const [gameForImportValue, setGameForImportValue] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const games = document.querySelectorAll('.a');
-	console.log(games.length)
-    if (games[0]) {
-    //   games[0].style.display = "none";
-    }
+ 
+    const storedGame = localStorage.getItem('game');
+    const parsedGame = storedGame ? JSON.parse(storedGame) : null;
+
+    console.log('daz')
+    
+    extractins =parsedGame;
+    setGameForImportValue(parsedGame);
+    setLoading(false); 
   }, []);
 
-  return (
-    <div className='flex justify-center w-full h-full items-center'>
-      <div className="gamecontainer w-3/5  h-5/6 ">
-        {groupData.map((group) => {
-          if (group.type === 'yes') {
-            return <Format2game  key={group.id} id={group.id} name={group.name} />;
-          }
-          else{
-			return <Format4game  key={group.id} id={group.id} name={group.name} />;
-		  }
-        })}
+  if (loading) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        <span className="text-xl font-black">Loading...</span>
       </div>
+    );
+  }
+
+  return (
+    <>
+    <div className='nameplayer w-full h-full bg-blue-600'>
+      
+        <button onClick={refreach} className='btn-base'>hahahah</button>
     </div>
+    <div className='game hidden justify-center w-full h-full items-center'>
+    <div  className='count absolute  left-20  top-40  bg-app--dark p-10 text-2xl  rounded-full border '>0</div>
+      <div className="gamecontainer w-3/5  h-5/6 overflow-hidden">
+        {gameForImportValue ? (
+          gameForImportValue.questions.map((group) => {
+            if (group.format === 2) {
+              return <Format2game key={group.id} dejakhtar={false} rightanswer={group.correct} id={group.id} stylr={"a"} name={group} />;
+            } else {
+              return <Format4game key={group.id} dejakhtar={false} rightanswer={group.correct} id={group.id} stylet={'flex'} name={group} />;
+            }
+            
+          })
+        ) : (
+          <span className="text-xl font-black">No data available</span>
+        )}
+      </div>
+    </div></>
   );
 }

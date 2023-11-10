@@ -26,7 +26,6 @@ export default function Charit() {
           </div>
         ))}
       </div>
-      <button className="btn-base">Finish</button>
     </div>
   );
 }
