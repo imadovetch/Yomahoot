@@ -3,9 +3,9 @@ import Format2game from './formar2game';
 import Format4game from './format4game';
 
 const groupData = [
-  { id: 1, type: 'no', name: 'Group 1' },
-//   { id: 2, type: 'yes', name: 'Group 2' },
-//   { id: 3, type: 'no', name: 'Group 3' },
+  { id: 1, type: 'yes', name: 'Group 1' },
+// { id: 2, type: 'yes', name: 'Group 2' },
+//  { id: 3, type: 'no', name: 'Group 3' },
   // ... more groups
 ];
 
