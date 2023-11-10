@@ -5,7 +5,24 @@ import Link from 'next/link';
 const socket = io('http://127.0.0.1:3000');
 
 let gameForImportValue = null; // Declare a variable outside the component
-
+function joinsucss(){
+  const data = {
+    id: 'HnEDFqZ'+"player",// gameid + player
+    questions: [
+      {
+        name: "imad",//smiya li dkhel
+      }
+    ]
+  };
+   fetch("/api/score", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log('mcha')
+}
 function JoinGame() {
   const [likes, setLikes] = useState(0);
   const [games, setGames] = useState(null);
@@ -22,6 +39,8 @@ function JoinGame() {
   };
 
   const handleCodeSubmit = () => {
+    
+
     const getGame = () => {
       fetch(`/api/game?id=${codeInput}`)
         .then((response) => response.json())
@@ -30,7 +49,12 @@ function JoinGame() {
           setGames(data.game);
           gameForImportValue = data.game; 
           console.log("gameForImportValue:fih", gameForImportValue);
-          localStorage.setItem('game', JSON.stringify(gameForImportValue));
+          if(!gameForImportValue){console.log('makayench'); } else{
+            joinsucss();
+            localStorage.setItem('game', JSON.stringify(gameForImportValue));
+            window.location.href = './preparegame';
+          }
+          
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -55,7 +79,7 @@ function JoinGame() {
           value={codeInput}
           onChange={(e) => setCodeInput(e.target.value)}
         />
-        <Link href="./preparegame"><button onClick={handleCodeSubmit}>Submit Code</button></Link>
+        <button onClick={handleCodeSubmit}>Submit Code</button>
       </div>
     </div>
   );
