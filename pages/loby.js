@@ -5,7 +5,7 @@ import * as components from "@/components/modules";
 async  function beginthegame() {
 
 		const data = {
-		  id: localStorage.getItem("ownerid")+"begin",// gameid + player
+		  id: localStorage.getItem("connectedgamecode")+"begin",// gameid + player
 		  questions: [
 			{
 			  bdat: "yes",
@@ -25,9 +25,9 @@ async  function beginthegame() {
   
 const Loby = () => {
   const [players, setPlayers] = useState([]);
-	if(!localStorage.getItem('ownerid')){'./Interface'}
+	
   const fetchScoreData = () => {
-    fetch(`/api/score?id=${localStorage.getItem('ownerid') + 'player'}`)
+    fetch(`/api/score?id=${localStorage.getItem("connectedgamecode") + 'player'}`)
       .then((response) => response.json())
       .then((data) => {
         setPlayers(data.game);
@@ -39,6 +39,8 @@ const Loby = () => {
   };
 
   useEffect(() => {
+    if(!localStorage.getItem('ownerid')){'./index'}
+    if(!localStorage.getItem('connectedgamecode')){'./Interface'}
     const intervalId = setInterval(fetchScoreData, 2000);
     return () => clearInterval(intervalId);
   }, []);

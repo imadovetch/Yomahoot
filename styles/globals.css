@@ -94,6 +94,12 @@
      @apply h-2/5   bg-app-dark rounded-lg  border hover:cursor-pointer hover:scale-105
      
   }
+  .answercorrect{
+    @apply bg-green-700
+  }
+  .answerwrong{
+    @apply bg-red-700
+  }
 }
 
 @layer utilities {

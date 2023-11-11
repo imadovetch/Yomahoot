@@ -3,7 +3,7 @@ import * as components from '@/components/modules'
 
 export default function GameHeader() {
 
-	const [theme, setTheme] = useState('dark')
+	const [theme, setTheme] = useState('light')
 
 	useEffect(() => {
 

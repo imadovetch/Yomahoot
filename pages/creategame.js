@@ -7,6 +7,10 @@ export default function Game() {
 
   useEffect(() => {
 
+      if (!localStorage.getItem('userid')) {
+        window.location.replace('./');
+      }
+ 
     
     setGameId(localStorage.getItem("gameinprocess") ? true : false)
     if(!localStorage.getItem("gameinprocess")){window.location.replace('./Interface');}

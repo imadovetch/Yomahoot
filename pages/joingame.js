@@ -2,18 +2,20 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Link from 'next/link';
+import * as components from "@/components/modules"
 const socket = io('http://127.0.0.1:3000');
 
 let gameForImportValue = null; // Declare a variable outside the component
-function joinsucss(){
-  if (!localStorage.getItem('gamejoinedid')) {
+function joinsucss(joinerserial){
+  if (!localStorage.getItem('gamejoinedid') || !joinerserial) {
     window.location.replace('./joingame');
   }else{
+    localStorage.setItem('joinerserialid',joinerserial)
     const data = {
       id: localStorage.getItem('gamejoinedid')+"player",// gameid + player
       questions: [
         {
-          name: "imad",//smiya li dkhel
+          name: joinerserial,//smiya li dkhel
         }
       ]
     };
@@ -29,19 +31,19 @@ function joinsucss(){
 
 }
 function JoinGame() {
-  const [likes, setLikes] = useState(0);
+  
   const [games, setGames] = useState(null);
-  const [codeInput, setCodeInput] = useState(''); // State to store user input
+  const [codeInput, setCodeInput] = useState('');
+  const [joinerserial, setjoinedone] = useState(''); // State to store user input
 
   useEffect(() => {
-    socket.on('likeupdate', (count) => {
-      setLikes(count);
-    });
+    if (!localStorage.getItem('userid')) {
+      window.location.replace('./');
+    }
+    console.log('hi')
   }, []);
 
-  const handleLike = () => {
-    socket.emit('liked');
-  };
+ 
 
   const handleCodeSubmit = () => {
     
@@ -54,11 +56,11 @@ function JoinGame() {
           setGames(data.game);
           gameForImportValue = data.game; 
           console.log("gameForImportValue:fih", gameForImportValue);
-          if(!gameForImportValue){console.log('makayench'); } else{
+          if(!gameForImportValue || (joinerserial === '')){console.log('makayench'); } else{
             
             localStorage.setItem('game', JSON.stringify(gameForImportValue));
             localStorage.setItem('gamejoinedid', codeInput);
-            joinsucss();
+            joinsucss(joinerserial);
             window.location.href = './preparegame';
             
           }
@@ -74,23 +76,44 @@ function JoinGame() {
 
   return (
     //if(1 == 1){}else{}
-    <div>
-      <button onClick={handleLike} className="btn">
-        aaaaaaay
-      </button>
-      <div id="likes">{likes}</div>
+    <main className=' overflow-hidden  blocks h-screen w-screen '>
+     
+       <div className="animate-toright sl p-4  mt-56 max-w-md mx-auto border  bg-app--dark  rounded-md shadow-md">
+  <div className="mb-4">
+  <label className="  text-app-light  text-xl block  font-semibold text-gray-600" htmlFor="codeInput">
+      Enter Your name:
+    </label>
+    <input
+      type="text"
+      id="nameInput"
+      className="text-black text-xl w-full mt-4 p-2 border rounded-md"
+      placeholder="Your Name"
+      value={joinerserial}
+      onChange={(e) => setjoinedone(e.target.value)}
+    />
+    <label className="text-app-light block  mt-3 text-xl font-semibold text-gray-600" htmlFor="codeInput">
+      Enter Code:
+    </label>
+    <input
+      type="text"
+      id="codeInput"
+      className=" text-black text-xl w-full mt-3 p-2 border rounded-md"
+      placeholder="Game Code"
+      value={codeInput}
+      onChange={(e) => setCodeInput(e.target.value)}
+    />
+    
+  </div>
+  <button
+    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+    onClick={handleCodeSubmit}
+  >
+    Submit Code
+  </button>
+</div>
+    </main>
+   
 
-      <div>
-        <label htmlFor="codeInput">Enter Code:</label>
-        <input
-          type="text"
-          id="codeInput"
-          value={codeInput}
-          onChange={(e) => setCodeInput(e.target.value)}
-        />
-        <button onClick={handleCodeSubmit}>Submit Code</button>
-      </div>
-    </div>
   );
 }
 

@@ -3,9 +3,11 @@
 
 export default function insertscore(){
 	
-	const  name = "imad"
+	// name dynamic apres
 	// const gameid = localStorage.getItem("game_id")
-	var gameidf = "HnEDFqZ"+'score';
+	
+	  const  name = localStorage.getItem('joinerserialid');
+	var gameidf = localStorage.getItem('gamejoinedid')+'score';
 	const storedNotesArrayString = localStorage.getItem('notes');
 const notes = JSON.parse(storedNotesArrayString);
 var notesl = notes.length; 
@@ -35,7 +37,8 @@ var notesl = notes.length;
 	  
 };
 async function catchwinner(){
-	await fetch(`/api/score?id=${"HnEDFqZ"+'score'}`)
+
+	await fetch(`/api/score?id=${localStorage.getItem('gamejoinedid')+'score'}`)
 	.then((response) => response.json())
 	.then((data) => {
 	  console.log("Success:", data.game);

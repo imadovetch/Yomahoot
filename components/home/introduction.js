@@ -1,10 +1,14 @@
 import Image from "next/image"
 import Link from "next/link";
+import React, { useEffect, useState } from 'react';
 
 export default function Introduction() {
+  const [gameconnectcode, setconnectgame] = useState(null)
   async function checkifitbigen(){
+    
+    localStorage.setItem("connectedgamecode",gameconnectcode)// chek security
     const data = {
-      id: localStorage.getItem("ownerid")+"begin",// gameid + player
+      id: gameconnectcode+"begin",
       questions: [
         {
           bdat: "la",
@@ -25,6 +29,12 @@ export default function Introduction() {
     <div className="flex flex-col-reverse md:flex-row gap-4 h-screen items-center justify-center">
       <div className="gap-8 absolute top-20 bg-app--dark px-12 border flex justify-between items-center shadow-2xl border-black mt-1 rounded-lg  m-auto   h-1/6">
         <div className="text-2xl font-serif">BY IMAD PHP</div>
+        <input
+          type="text"
+          id="codeInput"
+          value={gameconnectcode}
+          onChange={(e) => setconnectgame(e.target.value)}
+        />
         <Link href="./loby"><button onClick={checkifitbigen} className="btn-base px-5 py-3 text-xl float-right border border-black shadow-lg">Run Game</button></Link>
       </div>
       {/* introduction */}

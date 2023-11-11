@@ -3,20 +3,23 @@ import { useEffect, useState } from 'react';
 
 export default function Game() {
   useEffect(() => {
-	if(!localStorage.getItem('gamejoinedid')){window.location.replace('./joingame');}
+
+	if(!localStorage.getItem('gamejoinedid') || !localStorage.getItem('userid') ){window.location.replace('./joingame');}
     const intervalId = setInterval(() => {
-      fetch(`/api/score?id=${localStorage.getItem('ownerid') + 'begin'}`) // gameid
+      console.log("chekin")
+      fetch(`/api/score?id=${localStorage.getItem('gamejoinedid') + 'begin'}`) // gameid
         .then((response) => response.json())
         .then((data) => {
 
           if (data.game[1]) {
+            clearInterval(intervalId)
             setGo(true);
           }
         })
         .catch((error) => {
           console.error("Error:", error);
         });
-    }, 1000);
+    }, 500);
 
 
     return () => clearInterval(intervalId);
@@ -27,6 +30,6 @@ export default function Game() {
   if (go) {
     return <components.Preparedgame />;
   } else {
-    return <div>loading .....</div>;
+    return <div>loading .</div>;
   }
 }

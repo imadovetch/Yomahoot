@@ -42,9 +42,9 @@ const intervalId = setInterval(() => {
     localStorage.removeItem("game")
     console.log('sala')
     insertscore();
-    // window.location.href = './showwinners';
+    
   }
-}, 1000);
+}, 4000);
 
       
      
@@ -70,6 +70,8 @@ export default function Gamebodyprepared() {
     if (!localStorage.getItem('game') || !localStorage.getItem('gamejoinedid')) {
       window.location.replace('./joingame');
     }
+    setTimeout(refreach, 500);
+    
     const storedGame = localStorage.getItem('game');
     const parsedGame = storedGame ? JSON.parse(storedGame) : null;
 
@@ -95,14 +97,14 @@ export default function Gamebodyprepared() {
         <button onClick={refreach} className='btn-base'>hahahah</button>
     </div>
     <div className='game hidden justify-center w-full h-full items-center'>
-    <div  className='count absolute  left-20  top-40  bg-app--dark p-10 text-2xl  rounded-full border '>0</div>
+    <div  className='count absolute  left-20  top-40  bg-app--dark w-28 shadow-2xl  h-20 flex  justify-center items-center text-2xl  rounded-full border '>0</div>
       <div className="gamecontainer w-3/5  h-5/6 overflow-hidden">
         {gameForImportValue ? (
           gameForImportValue.questions.map((group) => {
             if (group.format === 2) {
-              return <Format2game key={group.id} dejakhtar={false} rightanswer={group.correct} id={group.id} stylr={"a"} name={group} />;
+              return <Format2game key={group.id} dejakhtar={false} rightanswer={group.correct}  stylr={"a"} name={group} />;
             } else {
-              return <Format4game key={group.id} dejakhtar={false} rightanswer={group.correct} id={group.id} stylet={'flex'} name={group} />;
+              return <Format4game key={group.id} dejakhtar={false} rightanswer={group.correct}  stylet={'flex'} name={group} />;
             }
             
           })

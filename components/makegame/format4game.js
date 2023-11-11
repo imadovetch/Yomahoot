@@ -4,8 +4,14 @@ export default function Format4game({ id, name, stylet,dejakhtar, rightanswer })
 	
   function chek(answer) {
 	if(dejakhtar === false){
+    const mother = document.getElementById(name.question);
+    const divs = mother.querySelectorAll('.answers');
+    
+    
 	if (answer === rightanswer) {
-		console.log('s7ii7');
+    divs.forEach(element => {
+      element.classList.add('answercorrect');
+    });
 		const storedNotesArrayString = localStorage.getItem('notes');
 		const storedNotesArray = JSON.parse(storedNotesArrayString);
 		storedNotesArray.push(1);
@@ -14,13 +20,17 @@ export default function Format4game({ id, name, stylet,dejakhtar, rightanswer })
 		
 	  }
 
-	else
-		console.log('la')
+	else{
+    divs.forEach(element => {
+      element.classList.add('answerwrong');
+    });
+  }
+	
 	dejakhtar =true;
   }}
 
   return (
-    <div className={`a w-full h-full justify-center items-center gap-10 flex flex-col ${stylet}`} key={id}>
+    <div id={name.question} className={` a w-full h-full justify-center items-center gap-10 flex flex-col ${stylet}`} key={id}>
       <div className='h-1/3 w-5/6 flex justify-center text-4xl font-serif p-4'>
         {name.question}
       </div>

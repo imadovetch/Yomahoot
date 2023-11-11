@@ -4,7 +4,12 @@ export default function Format2game({ id, name, styler,dejakhtar, rightanswer })
   function chek(answer) {
 
 	if(dejakhtar === false){
+    const mother = document.getElementById(name.question);
+    const divs = mother.querySelectorAll('.answers');
     if (answer === rightanswer) {
+      divs.forEach(element => {
+        element.classList.add('answercorrect');
+      });
       console.log('s7ii7');
       const storedNotesArrayString = localStorage.getItem('notes');
       const storedNotesArray = JSON.parse(storedNotesArrayString);
@@ -12,7 +17,9 @@ export default function Format2game({ id, name, styler,dejakhtar, rightanswer })
       const updatedNotesArrayString = JSON.stringify(storedNotesArray);
       localStorage.setItem('notes', updatedNotesArrayString);
     } else {
-      // Handle the case where the answer is incorrect
+      divs.forEach(element => {
+        element.classList.add('answerwrong');
+      });
     }
 	dejakhtar =true;
 }
@@ -20,7 +27,7 @@ export default function Format2game({ id, name, styler,dejakhtar, rightanswer })
 }
 
   return (
-    <div className={`a w-full h-full justify-center items-center gap-10 flex flex-col ${styler}`} key={id}>
+    <div id={name.question} className={`a w-full h-full justify-center items-center gap-10 flex flex-col ${styler}`} key={id}>
       <div className='h-1/3 w-5/6 text-4xl flex justify-center font-serif p-4'>
         {name.question}
       </div>
