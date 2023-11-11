@@ -4,6 +4,7 @@ import {count } from "./format4"
 
 
 function add2formatdiv(){
+	if(!localStorage.getItem('gameinprocess')){window.location.replace('./Interface');}
 	const Question2 = document.getElementById("question-2").value;
 
 	const answer2 = document.getElementById("answer2-2").value;

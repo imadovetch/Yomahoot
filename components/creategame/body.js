@@ -7,23 +7,29 @@ export default function GameBody() {
 
   async function savegame() {
     const storedDataJson = localStorage.getItem('gameinprocess');
+    if(!storedDataJson){window.location.replace('./Interface');}
     const data = JSON.parse(storedDataJson);
-    console.log(data);
-
-    try {
-      const response = await fetch("/api/game", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      localStorage.removeItem("gameinprocess");
-
-    } catch (error) {
-      console.error("Error:", error);
+    if(data.questions.length > 0){
+      try {
+        const response = await fetch("/api/game", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+  
+        localStorage.removeItem("gameinprocess");
+        
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }else{
+      return
     }
+    
+
+    
   }
     function hasQuestionsInLocalStorage() {
       const storedDataJson = localStorage.getItem('gameinprocess');

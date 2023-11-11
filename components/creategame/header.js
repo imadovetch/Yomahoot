@@ -1,28 +1,34 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import * as components from '@/components/modules'
 
 export default function GameHeader() {
-	const [darkTheme, setDarkTheme] = useState(false)
+
+	const [theme, setTheme] = useState('dark')
+
+	useEffect(() => {
+
+		theme === 'dark' ? document.documentElement.setAttribute('theme', 'dark')
+			  : document.documentElement.setAttribute('theme', 'light')
+
+	}, [theme])
+
 	const switchTheme = () => {
 
-		if(!darkTheme) {
-			document.documentElement.setAttribute('theme', 'dark')
-			setDarkTheme(true)
-		}else {
-			document.documentElement.setAttribute('theme', 'light')
-			setDarkTheme(false)
-		}
+		theme === 'dark' ? setTheme('light') : setTheme('dark')
 
 	}
-	return (
-		<header className="bg-app-dark flex justify-between   items-center p-4 shadow-md animate-rotate45">
-			<div className="flex w-7/12 ml-auto justify-between items-center">
 
-			<div className="text-2xl text-quotes  font-bold">Creating a game for you ....</div>
-			<button className="btn-base mr-4" onClick={switchTheme}>
-					{darkTheme ? 'Dark' : 'Light'}
+	return (
+		<header className="main-sub flex justify-between items-center shadow-md animate-rotate45">
+			<div className="w-full flex justify-between items-center">
+				<div className="text-2xl center flex items-center justify-center font-bold">
+					<components.Icon type='star'/>
+					Creating a game for you ....
+				</div>
+				<button className="btn-base center" onClick={switchTheme}>
+						<components.Icon type={theme === 'dark' ? 'moon' : 'sun'}/>
 				</button>
 			</div>
-			
 		</header>
 	)
 }

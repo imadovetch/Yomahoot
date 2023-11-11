@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import { getUniqueId } from "../../utils/modules"; 
-import {user_id} from "../../pages/Interface";
+import { getUniqueId } from "../../utils/uniqueid"
+import { Icon } from '@/components/modules'
 
 const uniqueId = getUniqueId();
 export {uniqueId}
@@ -23,7 +23,7 @@ export default function Header(){
 
 	const [darkTheme, setDarkTheme] = useState(false)
 	const switchTheme = () => {
-		console.log(user_id)
+		
 		if(!darkTheme) {
 			document.documentElement.setAttribute('theme', 'dark')
 			setDarkTheme(true)
@@ -45,6 +45,7 @@ export default function Header(){
 
 			{/* Links */}
 			<div className="flex items-center gap-2">
+				<Icon type="game" size={30}/>
 				<Link onClick={insertnewgame} href="./creategame" className="btn-base">Create Game</Link>
 				<Link href="./joingame" className="btn-base">Join game</Link>
 				<button className="btn-base" onClick={switchTheme}>

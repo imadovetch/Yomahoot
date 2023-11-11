@@ -3,8 +3,12 @@ import Format2game from './formar2game';
 import Format4game from './format4game';
 import insertscore from './score'
 var extractins;
-var gameidf;
+
 function refreach() {
+  if (!localStorage.getItem('game') || !localStorage.getItem('gamejoinedid')) {
+    window.location.replace('./joingame');
+  }
+  
   const games = document.querySelectorAll('.a');
   
   const playername = document.querySelector('.nameplayer');
@@ -38,7 +42,7 @@ const intervalId = setInterval(() => {
     localStorage.removeItem("game")
     console.log('sala')
     insertscore();
-    
+    // window.location.href = './showwinners';
   }
 }, 1000);
 
@@ -63,7 +67,9 @@ export default function Gamebodyprepared() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
- 
+    if (!localStorage.getItem('game') || !localStorage.getItem('gamejoinedid')) {
+      window.location.replace('./joingame');
+    }
     const storedGame = localStorage.getItem('game');
     const parsedGame = storedGame ? JSON.parse(storedGame) : null;
 

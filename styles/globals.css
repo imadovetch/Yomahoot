@@ -2,40 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* border-[1px_solid_red] */
-
 @layer base {
+
   html {
-    --app-dark: theme(colors.sky.50);
-    --app--dark: theme(colors.sky.100);
-
-    --app-light: theme(colors.sky.900);
-    --app--light: theme(colors.sky.800);
-
+    --app-dark: theme(colors.slate.950);
+    --app--dark: theme(colors.slate.900);
+    --app--dark: theme(colors.slate.800);
+    --app-light: theme(colors.slate.100);
+    --app--light: theme(colors.slate.200);
     --app-shadow: #00000025;
+    --app-primary: theme(colors.lime.600);
+    --error: theme(colors.red.600);
+    --success: theme(colors.green.600);
+    --danger: theme(colors.yellow.600);
+  }
 
-    --app-primary: theme(colors.pink.300);
+  html[theme="dark"] {
+    --app-dark: theme(colors.slate.100);
+    --app--dark: theme(colors.slate.200);
+    --app--dark: theme(colors.slate.300);
+    --app-light: theme(colors.slate.950);
+    --app--light: theme(colors.slate.900);
+    --app-shadow: #00000025;
+    --app-primary: theme(colors.lime.300);
     --error: theme(colors.red.300);
     --success: theme(colors.green.300);
     --danger: theme(colors.yellow.300);
-    --quotes : theme(colors.black);
   }
 
-    html[theme="dark"] {
-      --app-dark: theme(colors.sky.900);
-      --app--dark: theme(colors.sky.800);
-
-      --app-light: theme(colors.sky.50);
-      --app--light: theme(colors.sky.100);
-
-      --app-shadow: #00000025;
-
-      --app-primary: theme(colors.pink.400);
-      --error: theme(colors.red.300);
-      --success: theme(colors.green.300);
-      --danger: theme(colors.yellow.300);
-      --quotes : theme(colors.white);
-    }
+  * {
+    @apply text-base font-light
+  }
 
   body {
     background-color: var(--app-dark);
@@ -45,24 +42,40 @@
   #__next {
     height: 100%;
   }
+
 }
 
 @layer components {
+
+  /* Containers */
+  .main {
+    @apply w-screen h-screen flex flex-col items-center p-4 animate-toright
+  }
+
+  .main-sub {
+    @apply bg-app--dark border border-app---dark p-4 rounded-md
+  }
+
+  .center {
+    @apply flex justify-center items-center gap-4
+  }
+
+  .full {
+    @apply w-full h-full
+  }
+
+  .test {
+    @apply border-4 border-app-error;
+  }
+
   /* Buttons */
   .btn-base {
     @apply
-    shadow-md cursor-pointer bg-app-primary
-    text-app-light py-2 px-4 rounded-full outline-none
-    hover:ring-2 hover:ring-app-light duration-300;
+    bg-app-primary text-app-light font-bold py-2 px-4 rounded-full hover:ring-2 capitalize
+    hover:ring-app-light hover:scale-110 duration-300 shadow-lg cursor-pointer outline-none
   }
 
   /* Containers */
-  .test {
-    @apply border-4 border-black;
-  }
-  .center {
-    @apply flex justify-center items-center;
-  }
   .format2,
   .format4 {
     @apply bg-app-dark h-80 w-full md:w-80 border border-app--dark
@@ -84,8 +97,9 @@
 }
 
 @layer utilities {
+
   .animate-toright {
-    animation: kfr-toright 2s;
+    animation: kfr-toright 1s;
   }
 
   @keyframes kfr-toright {

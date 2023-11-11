@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Introduction() {
   async function checkifitbigen(){
     const data = {
-      id: 'HnEDFqZ'+"begin",// gameid + player
+      id: localStorage.getItem("ownerid")+"begin",// gameid + player
       questions: [
         {
           bdat: "la",

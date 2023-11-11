@@ -2,6 +2,7 @@
 
 
 export default function insertscore(){
+	
 	const  name = "imad"
 	// const gameid = localStorage.getItem("game_id")
 	var gameidf = "HnEDFqZ"+'score';
@@ -21,20 +22,20 @@ var notesl = notes.length;
 	  };
 	  console.log(data)
 	  
-	// fetch("/api/score", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
+	fetch("/api/score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 	  setTimeout(() => {
 		catchwinner();
 	  }, 3000);
 	  
 };
-function catchwinner(){
-	fetch(`/api/score?id=${"HnEDFqZ"+'score'}`)
+async function catchwinner(){
+	await fetch(`/api/score?id=${"HnEDFqZ"+'score'}`)
 	.then((response) => response.json())
 	.then((data) => {
 	  console.log("Success:", data.game);

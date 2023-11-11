@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 
 export default function Game() {
   useEffect(() => {
+	if(!localStorage.getItem('gamejoinedid')){window.location.replace('./joingame');}
     const intervalId = setInterval(() => {
-      fetch(`/api/score?id=${'HnEDFqZ' + 'begin'}`) // gameid
+      fetch(`/api/score?id=${localStorage.getItem('ownerid') + 'begin'}`) // gameid
         .then((response) => response.json())
         .then((data) => {
 
@@ -26,6 +27,6 @@ export default function Game() {
   if (go) {
     return <components.Preparedgame />;
   } else {
-    return <div>loading ......</div>;
+    return <div>loading .....</div>;
   }
 }

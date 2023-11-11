@@ -1,19 +1,24 @@
-import { uniqueidUser } from "../utils/modules";
-import Link from "next/link";
-export {user_id}
-export {name}
-var name = "imad";
-let user_id = ''; 
+// Home Page //
 
-function generateuserid() {
-  user_id = uniqueidUser(); 
-  localStorage.setItem("userid",user_id)
-}
+import Link from "next/link";
+import { giveUserId } from "@/utils/modules"
 
 export default function Register() {
+
+  const getStarted = () => {
+    
+    giveUserId()
+
+  }
+
   return (
-    <Link onClick={generateuserid} href="./Interface" className="center gap-2">
-      <span>go</span>
-    </Link>
-  );
+    <main className="main">
+      <div className="center full">
+        <Link className="btn-base" onClick={getStarted} href="./Interface">
+          <span>Get Started</span>
+        </Link>
+      </div>
+    </main>
+  )
+
 }

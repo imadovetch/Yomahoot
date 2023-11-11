@@ -17,7 +17,8 @@ module.exports = {
         'app-error': 'var(--error)',
         'app-success' : 'var(--success)',
         'app-danger' : 'var(--danger)',
-        'quotes':'var(--quotes)'
+        'quotes':'var(--quotes)',
+        'app---dark':'var(--app---dark)',
       }
     },
   },

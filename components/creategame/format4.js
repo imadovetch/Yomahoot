@@ -7,7 +7,7 @@ export { count };
 
 var count = 0;
 function add4formatdiv() {
-  // console.log("useridformat4",user_id)
+  if(!localStorage.getItem('gameinprocess')){window.location.replace('./Interface');}
   var Question4a = document.getElementById("question");
   var answer4a = document.getElementById("answer4");
   var answer3a = document.getElementById("answer3");

@@ -6,22 +6,27 @@ const socket = io('http://127.0.0.1:3000');
 
 let gameForImportValue = null; // Declare a variable outside the component
 function joinsucss(){
-  const data = {
-    id: 'HnEDFqZ'+"player",// gameid + player
-    questions: [
-      {
-        name: "imad",//smiya li dkhel
-      }
-    ]
-  };
-   fetch("/api/score", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log('mcha')
+  if (!localStorage.getItem('gamejoinedid')) {
+    window.location.replace('./joingame');
+  }else{
+    const data = {
+      id: localStorage.getItem('gamejoinedid')+"player",// gameid + player
+      questions: [
+        {
+          name: "imad",//smiya li dkhel
+        }
+      ]
+    };
+     fetch("/api/score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  }
+  
+
 }
 function JoinGame() {
   const [likes, setLikes] = useState(0);
@@ -50,9 +55,12 @@ function JoinGame() {
           gameForImportValue = data.game; 
           console.log("gameForImportValue:fih", gameForImportValue);
           if(!gameForImportValue){console.log('makayench'); } else{
-            joinsucss();
+            
             localStorage.setItem('game', JSON.stringify(gameForImportValue));
+            localStorage.setItem('gamejoinedid', codeInput);
+            joinsucss();
             window.location.href = './preparegame';
+            
           }
           
         })
@@ -65,12 +73,13 @@ function JoinGame() {
   };
 
   return (
+    //if(1 == 1){}else{}
     <div>
       <button onClick={handleLike} className="btn">
         aaaaaaay
       </button>
       <div id="likes">{likes}</div>
-  
+
       <div>
         <label htmlFor="codeInput">Enter Code:</label>
         <input

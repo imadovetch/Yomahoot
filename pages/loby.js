@@ -5,7 +5,7 @@ import * as components from "@/components/modules";
 async  function beginthegame() {
 
 		const data = {
-		  id: 'HnEDFqZ'+"begin",// gameid + player
+		  id: localStorage.getItem("ownerid")+"begin",// gameid + player
 		  questions: [
 			{
 			  bdat: "yes",
@@ -25,9 +25,9 @@ async  function beginthegame() {
   
 const Loby = () => {
   const [players, setPlayers] = useState([]);
-
+	if(!localStorage.getItem('ownerid')){'./Interface'}
   const fetchScoreData = () => {
-    fetch(`/api/score?id=${"HnEDFqZ" + 'player'}`)
+    fetch(`/api/score?id=${localStorage.getItem('ownerid') + 'player'}`)
       .then((response) => response.json())
       .then((data) => {
         setPlayers(data.game);
@@ -46,7 +46,7 @@ const Loby = () => {
   return (
     <main className="overflow-hidden h-full flex flex-col blocks animate-zoom">
       <components.Headergame />
-      <div className='w-full h-full flex gap-10'>
+      <div className='w-full h-full flex gap-10 flex-wrap'>
         {players.map((item) => (
           <div className='flex justify-center items-center font-serif text-3xl px-10 btn-base h-20 m-5' key={item.questions[0].name}>
             {item.questions[0].name}

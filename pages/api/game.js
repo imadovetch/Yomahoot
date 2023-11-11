@@ -15,12 +15,6 @@ export default async function handdler(req, res) {
     if (game) res.json({ game });
     else res.json({ message: "couldn't find this game" });
   }
-  // Get All Games Data
-  // if (req.method === "GET" && req.query.getall === '1'){
-  //   const games = await getAllGames();
-  //   if (games.length) res.json({ games });
-  //   else res.json({ message: "There is no game" });
-  // }
 
 }
 
@@ -51,17 +45,3 @@ async function getGame(id) {
     throw e;
   }
 }
-
-
-// async function getAllGames() {
-//   try {
-//     // Connect to database
-//     Connecttomongodb();
-//     // Get Game
-//     const games = await GameModel.find();
-//     return games;
-//   } catch (e) {
-//     console.log("Error while getting game");
-//     throw e;
-//   }
-// }
