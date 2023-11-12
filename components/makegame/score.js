@@ -33,7 +33,7 @@ var notesl = notes.length;
       });
 	  setTimeout(() => {
 		catchwinner();
-	  }, 3000);
+	  }, 1500);
 	  
 };
 async function catchwinner(){
