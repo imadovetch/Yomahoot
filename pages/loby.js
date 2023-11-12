@@ -50,7 +50,7 @@ const Loby = () => {
       <components.Headergame />
       <div className='w-full h-full flex gap-10 flex-wrap'>
         {players.map((item) => (
-          <div className='flex justify-center items-center font-serif text-3xl px-10 btn-base h-20 m-5' key={item.questions[0].name}>
+          <div className='flex justify-center items-center font-serif text-3xl px-10 btn-base h-20 m-5' >
             {item.questions[0].name}
           </div>
         ))}

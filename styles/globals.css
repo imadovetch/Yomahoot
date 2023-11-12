@@ -15,6 +15,7 @@
     --error: theme(colors.red.600);
     --success: theme(colors.green.600);
     --danger: theme(colors.yellow.600);
+    --text : theme(colors.black);
   }
 
   html[theme="dark"] {
@@ -28,6 +29,7 @@
     --error: theme(colors.red.300);
     --success: theme(colors.green.300);
     --danger: theme(colors.yellow.300);
+    --text : theme(colors.white);
   }
 
   * {
@@ -100,6 +102,96 @@
   .answerwrong{
     @apply bg-red-700
   }
+  .loader {
+    --cell-size: 100px;
+    --cell-spacing: 5px;
+    --cells: 3;
+    --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
+    display: flex;
+    flex-wrap: wrap;
+    width: var(--total-size);
+    height: var(--total-size);
+  }
+  
+  .cell {
+    flex: 0 0 var(--cell-size);
+    margin: var(--cell-spacing);
+    background-color: transparent;
+    box-sizing: border-box;
+    border-radius: 4px;
+    animation: 1.5s ripple ease infinite;
+  }
+  
+  .cell.d-1 {
+    animation-delay: 100ms;
+  }
+  
+  .cell.d-2 {
+    animation-delay: 200ms;
+  }
+  
+  .cell.d-3 {
+    animation-delay: 300ms;
+  }
+  
+  .cell.d-4 {
+    animation-delay: 400ms;
+  }
+  
+  .cell:nth-child(1) {
+    --cell-color: #00FF87;
+  }
+  
+  .cell:nth-child(2) {
+    --cell-color: #0CFD95;
+  }
+  
+  .cell:nth-child(3) {
+    --cell-color: #17FBA2;
+  }
+  
+  .cell:nth-child(4) {
+    --cell-color: #23F9B2;
+  }
+  
+  .cell:nth-child(5) {
+    --cell-color: #30F7C3;
+  }
+  
+  .cell:nth-child(6) {
+    --cell-color: #3DF5D4;
+  }
+  
+  .cell:nth-child(7) {
+    --cell-color: #45F4DE;
+  }
+  
+  .cell:nth-child(8) {
+    --cell-color: #53F1F0;
+  }
+  
+  .cell:nth-child(9) {
+    --cell-color: #60EFFF;
+  }
+  .input {
+    color:black ;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 0.5em;
+    background-color: #ccc;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    transition: 300ms ease-in-out;
+  }
+  
+  .input:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 1px 1px 5px #969696,
+               -1px -1px 5px #ffffff;
+  }
 }
 
 @layer utilities {
@@ -114,7 +206,23 @@
       opacity: 0;
     }
   }
-
+  @keyframes ripple {
+    0% {
+      background-color: transparent;
+    }
+  
+    30% {
+      background-color: var(--cell-color);
+    }
+  
+    60% {
+      background-color: transparent;
+    }
+  
+    100% {
+      background-color: transparent;
+    }
+  }
   .animate-toleft {
     animation: kfr-toleft 2s;
   }
@@ -136,6 +244,17 @@
       opacity: 0;
     }
   }
+  .clignote {
+    animation: clignotes 1.5s infinite;
+  }
+
+  @keyframes clignotes {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }}
 
   .animate-zoom {
     animation: kfr-zoom 2s;
