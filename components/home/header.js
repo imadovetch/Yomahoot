@@ -36,7 +36,7 @@ export default function Header(){
 	}
 	
 	return (
-		<header className="bg-app-dark flex justify-between items-center p-4 shadow-md animate-rotate45">
+		<header className="bg-app-dark z-50 flex justify-between items-center p-4 shadow-md animate-rotate45">
 
 			{/* Logo */}
 			<div className="flex items-center gap-4">

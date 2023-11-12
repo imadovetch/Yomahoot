@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="bg-app-dark flex items-center justify-between p-4 shadow-md animate-rotate45">
+    <div className="bg-app-dark flex items-center mt-auto justify-between p-4 shadow-md animate-rotate45">
       <div className="center gap-4">
         <Link href="https://www.facebook.com/profile.php?id=100010017554704" className="center gap-2">
           <Image src="https://img.icons8.com/color/30/facebook-new.png" width="30" height="30" alt="facebook" />

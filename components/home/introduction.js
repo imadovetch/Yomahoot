@@ -30,7 +30,7 @@ export default function Introduction() {
   }
   return (
 
-    <div className="flex flex-col-reverse md:flex-row gap-4 h-screen items-center justify-center">
+    <div className="flex  md:pl-6 gap-4 h-4/5 items-center justify-center">
       <div className="gap-8 absolute top-20 bg-app--dark px-12 border flex justify-between items-center shadow-2xl border-black mt-1 rounded-lg  m-auto   h-1/6">
         
         
