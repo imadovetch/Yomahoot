@@ -90,7 +90,7 @@
     @apply absolute bg-app--dark border-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none cursor-pointer  flex-col justify-between  w-96 mx-auto p-6   rounded-lg shadow-lg;
   }
   .truefalse{
-    @apply w-1/2 h-full hover:scale-105 hover:cursor-pointer bg-app-dark
+    @apply w-1/3 h-3/5 hover:scale-105 hover:cursor-pointer bg-app-dark
   }
   .ans4wers{
     width :48%;
