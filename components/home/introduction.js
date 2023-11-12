@@ -45,7 +45,7 @@ export default function Introduction() {
       </div>
 
       {/* shopping image */}
-      <div className="center animate-toleft">
+      <div className="center animate-toleft h-full">
         <Image
           className="w-full h-full"
           src="/gameinterface.svg"
