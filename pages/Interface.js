@@ -18,7 +18,7 @@ export default function Home() {
     }
   }, []);
   return (
-    <main className={`overflow-hidden h-full flex flex-col blocks animate-zoom ${lato.className}`}>
+    <main className={`overflow-hidden h-screen flex flex-col blocks animate-zoom ${lato.className}`}>
       <components.Header />
       <components.Introduction />
       <components.Footer />
