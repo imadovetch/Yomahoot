@@ -39,11 +39,6 @@ export default function ShowWinner() {
         )}
       </div>
     </main>
-// 	//  <main className='flex flex-col items-center justify-center h-screen'>
-// 	<div className='text-4xl font-bold text-green-500 mb-8'>Scoreboard</div>
-// 	<div className='custom-scrollbar h-4/5 w-2/4 py-6 rounded-lg border shadow-md bg-white'>
-	  
-// 	</div>
-//   </main>
+
   );
 }

@@ -6,7 +6,7 @@ export default function Game() {
 
 	if(!localStorage.getItem('gamejoinedid') || !localStorage.getItem('userid') ){window.location.replace('./joingame');}
     const intervalId = setInterval(() => {
-      console.log("chekin")
+      
       fetch(`/api/score?id=${localStorage.getItem('gamejoinedid') + 'begin'}`) // gameid
         .then((response) => response.json())
         .then((data) => {

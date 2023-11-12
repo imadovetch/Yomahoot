@@ -46,8 +46,7 @@ const intervalId = setInterval(() => {
   }
 }, 20000);
 
-      
-     
+
 }
 function CHECKCLICK(gamesw){
   const motheranswers = gamesw.querySelector('.motheranswers');
@@ -70,7 +69,7 @@ export default function Gamebodyprepared() {
     if (!localStorage.getItem('game') || !localStorage.getItem('gamejoinedid')) {
       window.location.replace('./joingame');
     }
-    setTimeout(refreach, 500);
+    setTimeout(refreach, 300);
     
     const storedGame = localStorage.getItem('game');
     const parsedGame = storedGame ? JSON.parse(storedGame) : null;

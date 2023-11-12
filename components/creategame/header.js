@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import * as components from '@/components/modules'
 
-export default function GameHeader() {
+export default function GameHeader(params) {
 
 	const [theme, setTheme] = useState('light')
 
@@ -23,7 +23,7 @@ export default function GameHeader() {
 			<div className="w-full flex justify-between items-center">
 				<div className="text-2xl center flex items-center justify-center font-bold">
 					<components.Icon type='star'/>
-					Creating a game for you ....
+					{params.var}
 				</div>
 				<button className="btn-base center" onClick={switchTheme}>
 						<components.Icon type={theme === 'dark' ? 'sun' : 'moon'}/>

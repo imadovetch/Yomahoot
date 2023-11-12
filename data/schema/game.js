@@ -22,7 +22,7 @@ const Question2Schema = new mongoose.Schema({
 
 const GameSchema = new mongoose.Schema({
   id: String,
-  questions: [Question4Schema | Question2Schema], // Use the defined schemas here
+  questions: [Question4Schema | Question2Schema],
 });
 
 const GameModel = mongoose.models.games || mongoose.model('games', GameSchema);

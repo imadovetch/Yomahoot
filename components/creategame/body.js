@@ -10,7 +10,7 @@ export default function GameBody() {
     if(!storedDataJson){window.location.replace('./Interface');}
     const data = JSON.parse(storedDataJson);
     if(data.questions.length > 0){
-      return
+      
       try {
         const response = await fetch("/api/game", {
           method: "POST",
@@ -32,14 +32,7 @@ export default function GameBody() {
 
     
   }
-    function hasQuestionsInLocalStorage() {
-      const storedDataJson = localStorage.getItem('gameinprocess');
-      if (storedDataJson) {
-        const data = JSON.parse(storedDataJson);
-        return data.questions && data.questions.length > 0;
-      }
-      return false;
-    }
+  
   return (
     <div className='flex w-full h-full items-center'>
       <Charit />

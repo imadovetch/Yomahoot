@@ -40,7 +40,8 @@ function JoinGame() {
     if (!localStorage.getItem('userid')) {
       window.location.replace('./');
     }
-    console.log('hi')
+    if(localStorage.getItem('gamejoinedid')){localStorage.removeItem('gamejoinedid')}
+    
   }, []);
 
  
@@ -77,8 +78,8 @@ function JoinGame() {
   return (
     //if(1 == 1){}else{}
     <main className=' overflow-hidden  blocks h-screen w-screen '>
-     
-       <div className="animate-toright sl p-4  mt-56 max-w-md mx-auto border  bg-app--dark  rounded-md shadow-md">
+     <components.GameHeader var={'Join a Game and Enjoy '} />
+       <div className="animate-toright sl p-8  mt-56 max-w-md mx-auto border  bg-app--dark  rounded-md shadow-md">
   <div className="mb-4">
   <label className="  text-app-light  text-xl block  font-semibold text-gray-600" htmlFor="codeInput">
       Enter Your name:

@@ -19,12 +19,9 @@ export default function Game() {
   return gameIdProcess
   ? (
     <main className="overflow-hidden h-full flex flex-col blocks animate-zoom">
-      <components.GameHeader />
+      <components.GameHeader var={'Create a Game and share it with your friends '} />
       <components.GameBody />
       <components.Footer />
-      {/* My custom components called Icon give it a type and size and maybe custom style */}
-      {/* This is just a test you can use this component through out your funny game :o */}
-      {/* <components.Icon type="user" size={50}/> */}
     </main>
     
   )

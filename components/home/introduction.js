@@ -39,10 +39,9 @@ export default function Introduction() {
         <button onClick={checkifitbigen} className="btn-base px-5 py-3 text-xl float-right border border-black shadow-lg">Run Game</button>
       </div>
       {/* introduction */}
-      <div className="text-xl font-bold max-w-xl mx-auto animate-toright">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in
-        malesuada arcu. Nullam tristique libero nec euismod. Nunc sed ultricies
-        justo. Morbi vestibulum ipsum at ante euismod.
+      <div className="text-2xl font-bold max-w-xl mx-auto animate-toright">
+      Create or Join Games with your friends freely and enjoy the rich features of the application. Our platform provides a seamless and interactive gaming experience, allowing you to effortlessly set up your own games or join those hosted by friends.
+       
       </div>
 
       {/* shopping image */}

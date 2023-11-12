@@ -194,11 +194,10 @@
                -1px -1px 5px #ffffff;
   }
   .custom-scrollbar {
-    width: 300px;
-    height: 200px;
-    overflow-y: scroll; /* Enable vertical scrollbar */
-    border: 1px solid #ccc; /* Optional border for the div */
-    /* Other styling for your div goes here */
+    
+    overflow-y: auto; 
+    border: 1px solid #ccc; 
+   
 
     /* Custom scrollbar styles */
     scrollbar-width: thin;
@@ -206,21 +205,26 @@
 
     /* WebKit styles */
     &::-webkit-scrollbar {
-      width: 12px;
+      width: 9px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #888;
+      background-image: linear-gradient(to right, rgb(169, 161, 161), transparent  );
       border-radius: 6px;
+      
     }
 
     &::-webkit-scrollbar-track {
-      background-color: #f1f1f1;
+      margin-block: 1rem;
+      
     }
 
     &::-webkit-scrollbar-thumb:hover {
       background-color: #555;
     }
+  }
+  .test4ans{
+    min-width: 500px;
   }
 }
 
