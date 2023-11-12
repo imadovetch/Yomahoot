@@ -41,13 +41,16 @@ function add2formatdiv(){
 
 			storedData.questions.push(newQuestion);
 
-			console.log(storedData);
+			
 			const updatedDataJson = JSON.stringify(storedData);
 
 			
 			localStorage.setItem('gameinprocess', updatedDataJson);
+			document.getElementById("question-2").value = "";
+      document.querySelector(".error-2").style.display = "none";
 		} else {
-		  document.querySelector(".error").textContent = "Choose the right Answer";
+			document.querySelector(".error-2").style.display = "flex";
+		  document.querySelector(".error-2").textContent = "Choose the right Answer";
 		}
 		
 	}
@@ -89,7 +92,7 @@ export default function Format2(){
 	<textarea
 	  id="question-2"
 	  name="question"
-	  className="w-full p-2 border rounded-md mb-4 text-app--dark"
+	  className="input w-full p-2 border rounded-md mb-4 "
 	></textarea>
 	<label htmlFor="answer1" className="block text-lg font-medium mb-2">
 	  True: <input type="radio" name="answer" value="answer1" />

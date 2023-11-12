@@ -13,6 +13,9 @@ export default function Home() {
     if (!localStorage.getItem('userid')) {
       window.location.replace('./');
     }
+    if(localStorage.getItem('gameinprocess')){
+      localStorage.removeItem('gameinprocess')
+    }
   }, []);
   return (
     <main className={`overflow-hidden h-full flex flex-col blocks animate-zoom ${lato.className}`}>

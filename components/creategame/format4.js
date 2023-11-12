@@ -65,6 +65,7 @@ console.log(storedData);
       
        
     } else {
+      document.querySelector(".error").style.display = "flex";
       document.querySelector(".error").textContent = "Choose the right Answer";
     }
 }else {
@@ -123,7 +124,7 @@ export default function Format4() {
           <textarea
             id="question"
             name="question"
-            className="w-full p-2 border rounded-md mb-4 text-app--dark"
+            className="input w-full p-2 border rounded-md mb-4 "
           ></textarea>
           <label htmlFor="answer1" className="block text-lg font-medium mb-2">
             Answer 1: <input type="radio" name="answer" value="answer1" />
@@ -131,7 +132,7 @@ export default function Format4() {
           <input
             id="answer1"
             name="answer1"
-            className="w-full p-2 border rounded-md mb-4  text-app--dark"
+            className="input w-full p-2 border rounded-md mb-4  "
           />
           <label htmlFor="answer2" className="block text-lg font-medium mb-2">
             Answer 2: <input type="radio" name="answer" value="answer2" />
@@ -140,7 +141,7 @@ export default function Format4() {
           <input
             id="answer2"
             name="answer2"
-            className="w-full p-2 border rounded-md mb-4 text-app--dark"
+            className="input w-full p-2 border rounded-md mb-4 "
           />
           <label htmlFor="answer3" className="block text-lg font-medium mb-2">
             Answer 3: <input type="radio" name="answer" value="answer3" />
@@ -148,7 +149,7 @@ export default function Format4() {
           <input
             id="answer3"
             name="answer3"
-            className="w-full p-2 border rounded-md mb-4 text-app--dark"
+            className="input w-full p-2 border rounded-md mb-4 "
           />
           <label htmlFor="answer4" className="block text-lg font-medium mb-2">
             Answer 4: <input type="radio" name="answer" value="answer4" />
@@ -156,7 +157,7 @@ export default function Format4() {
           <input
             id="answer4"
             name="answer4"
-            className="w-full p-2 border rounded-md mb-4 text-app--dark"
+            className="input w-full p-2 border rounded-md mb-4 "
           />
           <div className=" w-1/2 ml-auto flex justify-between items-center ">
             <button

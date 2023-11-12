@@ -6,7 +6,7 @@ export default function Preparedgame(){
 		<main className="overflow-hidden h-full flex flex-col blocks animate-zoom ">
 			<components.Headergame />
 			<components.GameBodyprepared />
-			<components.Footer />
+			{/* <components.Footer /> */}
     	</main>
 	)
 }

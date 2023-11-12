@@ -93,7 +93,8 @@
   }
   .ans4wers{
     width :48%;
-     @apply h-2/5   bg-app-dark rounded-lg  border hover:cursor-pointer hover:scale-105
+    
+     @apply h-2/5 p-2 font-serif overflow-hidden  bg-app-dark rounded-lg  border hover:cursor-pointer hover:scale-105
      
   }
   .answercorrect{
@@ -191,6 +192,35 @@
     transform: scale(1.05);
     box-shadow: 1px 1px 5px #969696,
                -1px -1px 5px #ffffff;
+  }
+  .custom-scrollbar {
+    width: 300px;
+    height: 200px;
+    overflow-y: scroll; /* Enable vertical scrollbar */
+    border: 1px solid #ccc; /* Optional border for the div */
+    /* Other styling for your div goes here */
+
+    /* Custom scrollbar styles */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+
+    /* WebKit styles */
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
   }
 }
 

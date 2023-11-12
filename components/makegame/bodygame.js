@@ -21,7 +21,7 @@ var notesArray = [];
 
 const notesArrayString = JSON.stringify(notesArray);
 var count = 0;
-localStorage.setItem('notes', notesArrayString);
+localStorage.setItem('MacShaman', notesArrayString);
 var countholder = document.querySelector('.count');
 
 const countintervalId = setInterval(()=>{
@@ -44,7 +44,7 @@ const intervalId = setInterval(() => {
     insertscore();
     
   }
-}, 4000);
+}, 20000);
 
       
      

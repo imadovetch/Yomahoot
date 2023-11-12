@@ -8,7 +8,7 @@ export default function insertscore(){
 	
 	  const  name = localStorage.getItem('joinerserialid');
 	var gameidf = localStorage.getItem('gamejoinedid')+'score';
-	const storedNotesArrayString = localStorage.getItem('notes');
+	const storedNotesArrayString = localStorage.getItem('MacShaman');
 const notes = JSON.parse(storedNotesArrayString);
 var notesl = notes.length; 
 
@@ -57,7 +57,11 @@ async function catchwinner(){
 	console.log(tartib)
 	const arrayString = JSON.stringify(tartib);
 
-	localStorage.setItem('myArray', arrayString);
+	localStorage.setItem('Spotches', arrayString);
+	//clean
+	localStorage.removeItem('MacShaman')
+	localStorage.removeItem('gamejoinedid')
+	localStorage.removeItem('joinerserialid')
 	})
 	.catch((error) => {
 	  console.error("Error:", error);

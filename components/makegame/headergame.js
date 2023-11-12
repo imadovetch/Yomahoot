@@ -1,15 +1,17 @@
 import { useState } from "react"
+import * as components from '@/components/modules'
+
 
 export default function GameHeader() {
-	const [darkTheme, setDarkTheme] = useState(false)
+	const [darkTheme, setDarkTheme] = useState('light')
 	const switchTheme = () => {
 
-		if(!darkTheme) {
+		if(darkTheme === 'light') {
 			document.documentElement.setAttribute('theme', 'dark')
-			setDarkTheme(true)
+			setDarkTheme("dark")
 		}else {
 			document.documentElement.setAttribute('theme', 'light')
-			setDarkTheme(false)
+			setDarkTheme('light')
 		}
 
 	}
@@ -19,7 +21,7 @@ export default function GameHeader() {
 
 			<div className="text-base font-bold">Think before you answer & Good luck</div>
 			<button className="btn-base mr-4" onClick={switchTheme}>
-					{darkTheme ? 'Dark' : 'Light'}
+			<components.Icon type={darkTheme === 'dark' ? 'sun' : 'moon'}/>
 				</button>
 			</div>
 			

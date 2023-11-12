@@ -86,7 +86,7 @@ function JoinGame() {
     <input
       type="text"
       id="nameInput"
-      className="text-black text-xl w-full mt-4 p-2 border rounded-md"
+      className="text-xl w-full mt-3 p-2 input"
       placeholder="Your Name"
       value={joinerserial}
       onChange={(e) => setjoinedone(e.target.value)}
@@ -97,7 +97,7 @@ function JoinGame() {
     <input
       type="text"
       id="codeInput"
-      className=" text-black text-xl w-full mt-3 p-2 border rounded-md"
+      className="  text-xl w-full mt-3 p-2 input"
       placeholder="Game Code"
       value={codeInput}
       onChange={(e) => setCodeInput(e.target.value)}

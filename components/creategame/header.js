@@ -26,7 +26,7 @@ export default function GameHeader() {
 					Creating a game for you ....
 				</div>
 				<button className="btn-base center" onClick={switchTheme}>
-						<components.Icon type={theme === 'dark' ? 'moon' : 'sun'}/>
+						<components.Icon type={theme === 'dark' ? 'sun' : 'moon'}/>
 				</button>
 			</div>
 		</header>

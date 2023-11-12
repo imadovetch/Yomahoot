@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { getUniqueId } from "../../utils/uniqueid"
 import { Icon } from '@/components/modules'
+import * as components from '@/components/modules'
 
 const uniqueId = getUniqueId();
 export {uniqueId}
@@ -21,15 +22,15 @@ function insertnewgame() {
 
 export default function Header(){
 
-	const [darkTheme, setDarkTheme] = useState(false)
+	const [darkTheme, setDarkTheme] = useState('light')
 	const switchTheme = () => {
 		
-		if(!darkTheme) {
+		if(darkTheme === 'light') {
 			document.documentElement.setAttribute('theme', 'dark')
-			setDarkTheme(true)
+			setDarkTheme("dark")
 		}else {
 			document.documentElement.setAttribute('theme', 'light')
-			setDarkTheme(false)
+			setDarkTheme('light')
 		}
 
 	}
@@ -49,7 +50,7 @@ export default function Header(){
 				<Link onClick={insertnewgame} href="./creategame" className="btn-base">Create Game</Link>
 				<Link href="./joingame" className="btn-base">Join game</Link>
 				<button className="btn-base" onClick={switchTheme}>
-					{darkTheme ? 'Dark' : 'Light'}
+					<components.Icon type={darkTheme === 'dark' ? 'sun' : 'moon'}/>
 				</button>
 			</div>
 			
