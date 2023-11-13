@@ -10,7 +10,7 @@ export default function GameBody() {
     if(!storedDataJson){window.location.replace('./Interface');}
     const data = JSON.parse(storedDataJson);
     if(data.questions.length > 0){
-      
+      return
       try {
         const response = await fetch("/api/game", {
           method: "POST",

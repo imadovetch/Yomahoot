@@ -44,7 +44,7 @@ const intervalId = setInterval(() => {
     insertscore();
     
   }
-}, 20000);
+}, 15000);
 
 
 }
